@@ -1,7 +1,7 @@
 // CONFIGURACIÓN: reemplazá estos dos valores por los de TU proyecto Supabase.
 // Usá la URL del proyecto y la clave publishable/anon. Nunca uses service_role ni sb_secret.
 const SUPABASE_URL = "PEGAR_AQUI_URL_DEL_PROYECTO";
-const SUPABASE_ANON_KEY = "PEGAR_AQUI_CLAVE_PUBLICABLE";
+const SUPABASE_ANON_KEY = "sb_publishable_icatLQapk7Q2DDGeEkYkmA_m3kdfu5S";
 
 const form = document.getElementById("parking-form");
 const recordsElement = document.getElementById("records");
