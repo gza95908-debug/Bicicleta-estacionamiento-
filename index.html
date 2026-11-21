@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estacionamientos para bicicletas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">Colegio Nacional Las Residentas · 2.º BTI</p>
+      <h1>🚲 Estacionamientos para bicicletas</h1>
+      <p>Registro y ubicación de bicicleteros por predio.</p>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="panel">
+      <h2 id="form-title">Registrar estacionamiento</h2>
+      <form id="parking-form">
+        <input type="hidden" id="record-id">
+        <div class="fields">
+          <label>Nombre del punto<input id="name" required maxlength="100" placeholder="Ej.: Bicicletero entrada"></label>
+          <label>Latitud (−90 a 90)<input id="latitude" type="number" step="any" min="-90" max="90" required placeholder="-25.3000"></label>
+          <label>Longitud (−180 a 180)<input id="longitude" type="number" step="any" min="-180" max="180" required placeholder="-57.6000"></label>
+          <label>Cantidad de lugares<input id="spaces" type="number" min="1" step="1" required placeholder="10"></label>
+          <label>Predio<input id="property" required maxlength="100" placeholder="Ej.: Patio principal"></label>
+          <label>Cobertura<select id="coverage" required>
+            <option value="">Seleccionar</option><option>Techado</option><option>Al aire libre</option>
+          </select></label>
+        </div>
+        <div class="actions">
+          <button type="submit" id="save-button">Guardar estacionamiento</button>
+          <button type="button" class="secondary" id="cancel-edit" hidden>Cancelar edición</button>
+          <button type="reset" class="light" id="clear-button">Limpiar</button>
+        </div>
+        <p id="status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="list-head">
+        <div><h2>Estacionamientos registrados</h2><p class="muted">Elegí un punto para verlo en el mapa.</p></div>
+        <label class="filter">Filtrar cobertura
+          <select id="filter"><option value="">Todos</option><option>Techado</option><option>Al aire libre</option></select>
+        </label>
+      </div>
+      <div id="records" class="records"><p class="muted">Conectando con Supabase…</p></div>
+    </section>
+
+    <section class="panel">
+      <h2>Ubicación en Google Maps</h2>
+      <p id="selected-name" class="muted">Seleccioná un estacionamiento de la lista.</p>
+      <div class="map-frame"><iframe id="map" title="Ubicación del estacionamiento en Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Paraguay&output=embed"></iframe></div>
+      <p class="hint">El mapa se centra en las coordenadas guardadas para el punto seleccionado.</p>
+    </section>
+    <footer>Proyecto práctico · Gestión de estacionamientos para bicicletas</footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
